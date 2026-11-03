@@ -9,7 +9,7 @@ services:
       # The web app. Embedded RDP and VNC sessions are served through it, so
       # Guacamole's own port stays inside the container.
       - "4000:4000"
-      # Built-in VPN (Enterprise): uncomment this line and cap_add below.
+      # Built-in VPN (paid plans): uncomment this line and cap_add below.
       # - "51820:51820/udp"
     # cap_add:
     #   - NET_ADMIN

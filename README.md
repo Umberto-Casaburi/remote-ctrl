@@ -18,7 +18,7 @@
 <p align="center">
   <a href="../../releases/latest"><img alt="Latest release" src="https://img.shields.io/github/v/release/Umberto-Casaburi/remote-ctrl?color=3b82f6&label=release"></a>
   <img alt="Docker image" src="https://img.shields.io/badge/image-ghcr.io-0f172a?logo=docker&logoColor=white">
-  <img alt="Platform" src="https://img.shields.io/badge/platform-linux%2Famd64-0f172a">
+  <img alt="Platform" src="https://img.shields.io/badge/image-linux%2Famd64-0f172a">
   <img alt="Free for one user" src="https://img.shields.io/badge/free-1%20user-14b8a6">
 </p>
 
@@ -47,47 +47,51 @@ own server with one Docker image and open it from any browser.
 - **Shared folders for each team.** Group servers in folders, share them with a
   team, and keep personal favorites and snippets. Jump hosts are set once per
   server, not on every laptop.
-- **AI agents, inside the fence you draw** (Enterprise). Connect Claude or any
+- **AI agents, inside the fence you draw** (paid plans). Connect Claude or any
   MCP client. Each token reaches only the folders you pick, never more than the
   user who created it, and every tool call is logged.
-- **Built-in VPN** (Enterprise). Reach machines behind NAT or a firewall: each
+- **Built-in VPN** (paid plans). Reach machines behind NAT or a firewall: each
   one connects out to Remote CTRL with WireGuard, with no ports to open on it.
 
 ## Editions
 
-| | Free | Enterprise |
-| --- | --- | --- |
-| User accounts | 1 | 10, 25, 50, 250 or custom |
-| SSH, SFTP, RDP and VNC | ✓ | ✓ |
-| Command suggestions, snippets, saved password insertion | ✓ | ✓ |
-| Resumable uploads, jump hosts | ✓ | ✓ |
-| Teams and shared folders | Needs more users | ✓ |
-| AI agents through MCP | | ✓ |
-| Built-in VPN | | ✓ |
-| Price | Free, no account needed | [Yearly, by tier](https://remote-ctrl.com/pricing) |
+| | Free | Personal | Team and up |
+| --- | --- | --- | --- |
+| User accounts | 1 | 1 | 10, 25, 50, 250 or custom |
+| SSH, SFTP, RDP and VNC | ✓ | ✓ | ✓ |
+| Command suggestions, snippets, saved password insertion | ✓ | ✓ | ✓ |
+| Resumable uploads, jump hosts | ✓ | ✓ | ✓ |
+| AI agents through MCP | | ✓ | ✓ |
+| Built-in VPN | | ✓ | ✓ |
+| Teams and shared folders | | | ✓ |
+| Price | Free, no account needed | [Yearly](https://remote-ctrl.com/pricing) | [Yearly, by tier](https://remote-ctrl.com/pricing) |
 
+Personal unlocks every feature for one user, for personal or professional use.
 Every account counts toward the user limit, administrators included. An
-administrator activates Enterprise from **About** with a license key; each key
+administrator activates a license from **About** with a license key; each key
 works on one installation at a time.
 
 ## Install
 
-You need a Linux x86-64 machine with Docker and Docker Compose, and network
-access from it to the servers you want to reach. Apache Guacamole and its
-database come in the image.
+You need Docker with Compose on an x86-64 machine (a Linux server, or Docker
+Desktop on Windows or an Intel Mac), and network access from it to the servers
+you want to reach. Apache Guacamole and its database come in the image. ARM
+machines, such as a Raspberry Pi or an Apple Silicon Mac, are not supported
+yet. On Windows, run the commands below in WSL or Git Bash.
 
 ```sh
 curl -fsSLO https://raw.githubusercontent.com/Umberto-Casaburi/remote-ctrl/main/docker-compose.yml
 curl -fsSL https://raw.githubusercontent.com/Umberto-Casaburi/remote-ctrl/main/.env.example -o .env
 # Replace each CHANGE_ME with a random secret:
 for key in APP_SECRET RDP_GUACAMOLE_PASSWORD GUACAMOLE_POSTGRES_PASSWORD; do
-  sed -i "s/^$key=CHANGE_ME$/$key=$(openssl rand -hex 32)/" .env
+  sed -i.bak "s/^$key=CHANGE_ME$/$key=$(openssl rand -hex 32)/" .env
 done
+rm -f .env.bak
 docker compose up -d
 ```
 
-Open http://localhost:4000 and create the administrator account. To switch to
-Enterprise, paste your license key in **About**.
+Open http://localhost:4000 and create the administrator account. To activate a
+paid plan, paste your license key in **About**.
 
 > [!IMPORTANT]
 > Back up the `remote-ctrl-data` volume together with your `.env`. Saved host
@@ -157,7 +161,7 @@ RDP_GUACAMOLE_PUBLIC_URL=/remote/guacamole
 ## Your data stays with you
 
 Hosts, credentials and history live in one Docker volume on your machine, with
-saved secrets encrypted. Free runs fully offline. Enterprise sends only its
+saved secrets encrypted. Free runs fully offline. A paid plan sends only its
 license key and a random installation ID, once a day, to renew the license.
 
 - SSH host keys are trusted on first use; if a server later presents a
