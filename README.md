@@ -18,7 +18,7 @@
 <p align="center">
   <a href="../../releases/latest"><img alt="Latest release" src="https://img.shields.io/github/v/release/Umberto-Casaburi/remote-ctrl?color=3b82f6&label=release"></a>
   <img alt="Docker image" src="https://img.shields.io/badge/image-ghcr.io-0f172a?logo=docker&logoColor=white">
-  <img alt="Platform" src="https://img.shields.io/badge/image-linux%2Famd64-0f172a">
+  <img alt="Platforms" src="https://img.shields.io/badge/image-amd64%20%7C%20arm64-0f172a">
   <img alt="Free for one user" src="https://img.shields.io/badge/free-1%20user-14b8a6">
 </p>
 
@@ -73,11 +73,11 @@ works on one installation at a time.
 
 ## Install
 
-You need Docker with Compose on an x86-64 machine (a Linux server, or Docker
-Desktop on Windows or an Intel Mac), and network access from it to the servers
-you want to reach. Apache Guacamole and its database come in the image. ARM
-machines, such as a Raspberry Pi or an Apple Silicon Mac, are not supported
-yet. On Windows, run the commands below in WSL or Git Bash.
+You need Docker with Compose (a Linux server on x86-64 or ARM64, including a
+Raspberry Pi 4 or 5 with a 64-bit system, or Docker Desktop on Windows or
+macOS), and network access from it to the servers you want to reach. Apache
+Guacamole and its database come in the image. On Windows, run the commands
+below in WSL or Git Bash.
 
 ```sh
 curl -fsSLO https://raw.githubusercontent.com/Umberto-Casaburi/remote-ctrl/main/docker-compose.yml
@@ -128,7 +128,7 @@ docker compose up -d
 
 Release notes are in [Releases](../../releases). To stay on a specific
 version, replace `latest` in `docker-compose.yml` with its number, for example
-`ghcr.io/umberto-casaburi/remote-ctrl:1.0.0`.
+`ghcr.io/umberto-casaburi/remote-ctrl:1.0.1`.
 
 ## Reverse proxy
 
