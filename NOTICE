@@ -1,38 +1,43 @@
 Remote CTRL notices and third-party attributions
-===========================================
+================================================
 
 Remote CTRL
 Copyright (c) 2026 Umberto Casaburi. All rights reserved.
 License: Proprietary (see LICENSE)
 
-This product includes third-party components:
+The Remote CTRL container image includes the third-party components below,
+each under its own license. Those licenses apply to the components, not to
+Remote CTRL.
 
-1. Apache Guacamole (server and web application)
-   - Upstream project: https://guacamole.apache.org/
-   - Source: https://github.com/apache/guacamole-server
-   - License: Apache-2.0
-   - Usage in this project:
-     - Base image: guacamole/guacamole:1.6.0
-     - Guacamole server source build in Docker image
+1. Apache Guacamole 1.6.0 (guacd server and web application)
+   https://guacamole.apache.org/ - Apache License 2.0
+   The image is based on guacamole/guacamole:1.6.0 and builds guacd from the
+   upstream guacamole-server source.
 
-2. CodeMirror 6
-   - Upstream project: https://codemirror.net/
-   - Source: https://github.com/codemirror/dev
-   - License: MIT
-   - Usage in this project:
-     - public/vendor/codemirror/sftp-editor.bundle.js (built from
-       client/sftp-editor/entry.js via scripts/build-sftp-editor-bundle.mjs;
-       bundles @codemirror/* and @lezer/* packages)
+2. Apache Tomcat (shipped in the Guacamole base image)
+   https://tomcat.apache.org/ - Apache License 2.0
 
-3. Other npm dependencies
-   - Licenses are declared by their respective authors and distributed according to npm metadata.
-   - See package-lock.json and node_modules for complete dependency license details.
+3. Node.js 22
+   https://nodejs.org/ - MIT License and the licenses listed in its LICENSE file
 
-Asset provenance note
----------------------
-The following assets should keep their upstream attribution if they are third-party derived:
-- public/icons/*.svg
-- public/favicon.png
+4. PostgreSQL (database for Guacamole)
+   https://www.postgresql.org/ - PostgreSQL License
 
-If any of these assets are imported from external projects, include the original copyright
-and license notice in this file.
+5. FreeRDP, libssh2, libvncserver and the other system libraries guacd uses,
+   and wireguard-tools, iproute2 and iptables for the built-in VPN
+   Installed from the Ubuntu archive under their respective licenses
+   (including GPL-2.0 for wireguard-tools, iproute2 and iptables). Their
+   copyright files are in /usr/share/doc/<package>/copyright inside the
+   image, and their source is available from the Ubuntu archive.
+
+6. xterm.js
+   https://xtermjs.org/ - MIT License
+
+7. CodeMirror 6 and Lezer
+   https://codemirror.net/ - MIT License
+
+8. Other npm packages (including Express, ssh2, ws, better-sqlite3, Helmet,
+   http-proxy-middleware, Zod, adm-zip and the Model Context Protocol SDK)
+   Each under the license declared in its package metadata; the full list is
+   in /app/package-lock.json and each package's license file is under
+   /app/node_modules inside the image.
