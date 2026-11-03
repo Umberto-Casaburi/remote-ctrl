@@ -1,0 +1,15 @@
+services:
+  remote-ctrl:
+    image: ghcr.io/umberto-casaburi/remote-ctrl:latest
+    container_name: remote-ctrl
+    restart: unless-stopped
+    env_file:
+      - .env
+    ports:
+      - "4000:4000"
+      - "8080:8080"
+    volumes:
+      - remote-ctrl-data:/data
+
+volumes:
+  remote-ctrl-data:

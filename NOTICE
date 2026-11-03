@@ -1,0 +1,38 @@
+Remote CTRL notices and third-party attributions
+===========================================
+
+Remote CTRL
+Copyright (c) 2026 Umberto Casaburi. All rights reserved.
+License: Proprietary (see LICENSE)
+
+This product includes third-party components:
+
+1. Apache Guacamole (server and web application)
+   - Upstream project: https://guacamole.apache.org/
+   - Source: https://github.com/apache/guacamole-server
+   - License: Apache-2.0
+   - Usage in this project:
+     - Base image: guacamole/guacamole:1.6.0
+     - Guacamole server source build in Docker image
+
+2. CodeMirror 6
+   - Upstream project: https://codemirror.net/
+   - Source: https://github.com/codemirror/dev
+   - License: MIT
+   - Usage in this project:
+     - public/vendor/codemirror/sftp-editor.bundle.js (built from
+       client/sftp-editor/entry.js via scripts/build-sftp-editor-bundle.mjs;
+       bundles @codemirror/* and @lezer/* packages)
+
+3. Other npm dependencies
+   - Licenses are declared by their respective authors and distributed according to npm metadata.
+   - See package-lock.json and node_modules for complete dependency license details.
+
+Asset provenance note
+---------------------
+The following assets should keep their upstream attribution if they are third-party derived:
+- public/icons/*.svg
+- public/favicon.png
+
+If any of these assets are imported from external projects, include the original copyright
+and license notice in this file.
