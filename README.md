@@ -68,8 +68,8 @@ own server with one Docker image and open it from any browser.
 
 Personal unlocks every feature for one user, for personal or professional use.
 Every account counts toward the user limit, administrators included. An
-administrator activates a license from **About** with a license key; each key
-works on one installation at a time.
+administrator activates a license in **Management > License** with a license
+key; each key works on one installation at a time.
 
 ## Install
 
@@ -91,7 +91,7 @@ docker compose up -d
 ```
 
 Open http://localhost:4000 and create the administrator account. To activate a
-paid plan, paste your license key in **About**.
+paid plan, paste your license key in **Management > License**.
 
 > [!IMPORTANT]
 > Back up the `remote-ctrl-data` volume together with your `.env`. Saved host
@@ -116,8 +116,9 @@ Remote CTRL refuses to start while a required secret is still `CHANGE_ME`.
 
 ### Built-in VPN
 
-Uncomment the VPN lines in `docker-compose.yml`, open UDP port 51820 on the
-server, and enable the VPN in **Management > VPN**.
+Uncomment the VPN lines in `docker-compose.yml` and enable the VPN in
+**Management > VPN**. Opening UDP port 51820 on the server is optional: a device
+that cannot reach it connects through Remote CTRL's own address over HTTPS.
 
 ## Update
 
