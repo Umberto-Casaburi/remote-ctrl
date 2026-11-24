@@ -40,6 +40,7 @@ own server with one Docker image and open it from any browser.
 | **SFTP** | Browse, edit and upload files of any size. Uploads go up in chunks and resume after a dropped connection or a page reload. |
 | **RDP** | Windows desktops embedded in the tab, powered by Apache Guacamole inside the same image. |
 | **VNC** | Linux screens and macOS Screen Sharing, next to your terminals. |
+| **Remote support** | Help someone from a one-time link. They download a small client, accept, and their screen opens in a tab, with nothing to install and no ports to open. |
 
 - **Passwords never reach the browser.** When `sudo` or `ssh` asks for a
   password, pick a saved one: the server types it into the session, and only
@@ -61,6 +62,7 @@ own server with one Docker image and open it from any browser.
 | SSH, SFTP, RDP and VNC | ✓ | ✓ | ✓ |
 | Command suggestions, snippets, saved password insertion | ✓ | ✓ | ✓ |
 | Resumable uploads, jump hosts | ✓ | ✓ | ✓ |
+| Remote support from a link | One session at a time, up to 60 minutes | ✓ | ✓ |
 | AI agents through MCP | | ✓ | ✓ |
 | Built-in VPN | | ✓ | ✓ |
 | Teams and shared folders | | | ✓ |
@@ -129,7 +131,7 @@ docker compose up -d
 
 Release notes are in [Releases](../../releases). To stay on a specific
 version, replace `latest` in `docker-compose.yml` with its number, for example
-`ghcr.io/umberto-casaburi/remote-ctrl:1.0.1`.
+`ghcr.io/umberto-casaburi/remote-ctrl:1.2.0`.
 
 ## Reverse proxy
 
