@@ -131,7 +131,7 @@ docker compose up -d
 
 Release notes are in [Releases](../../releases). To stay on a specific
 version, replace `latest` in `docker-compose.yml` with its number, for example
-`ghcr.io/umberto-casaburi/remote-ctrl:1.2.1`.
+`ghcr.io/umberto-casaburi/remote-ctrl:1.3.0`.
 
 ## Reverse proxy
 
